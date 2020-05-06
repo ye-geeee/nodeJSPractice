@@ -20,14 +20,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-  secret: 'ambc@!vsmkv#!&*!#EDNAnsv#!$()_*#@',
-  resave: false,
-  saveUninitialized: true
-}));
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+app.use(cookieParser('secret code'));
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  secret: 'secret code',
+  cookie:{
+    httpOnly: true,
+    secure: false,
+  },
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
