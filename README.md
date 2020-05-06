@@ -1,4 +1,3 @@
 # nodeJSPractice
 
-## 9.1 프로젝트 구조 갖추기
-- Database로 MySQL 사용
+## [Chap 9 익스프레스로 SNS 서비스 만들기](./chap9_SNSExpressSample) 
