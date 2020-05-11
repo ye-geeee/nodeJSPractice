@@ -6,13 +6,13 @@ const session = require('express-session');
 const flash = require('connect-flash');
 require('dotenv').config();
 
-const pageRouter = require('./routes/page');
+const pageRouter = require('./routes/pages');
 
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 app.set('port', process.env.PORT || 8001);
 
 app.use(morgan('dev'));
@@ -29,6 +29,7 @@ app.use(session({
         secure: false,
     },
 }));
+app.use(flash());
 
 app.use('/', pageRouter);
 
